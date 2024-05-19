@@ -1,18 +1,18 @@
-#   (Eesti) ilutootedete andmebaas 
+#   (Eesti) ilutoodete andmebaas 
 Annabel Hiiu  
 Heili Aavola
 
 Oleme kaks keemia taustaga andmeteaduse tudengit ning otsustasime oma projektis tegeleda ilutoodete ja neis sisalduvate koostisosadega. 
 
-Valdkond ja selle mõisted
+## Valdkond ja selle mõisted
 
 Tegemist on ilutoodete valdkonnaga. Tooted sisaldavad koostisosi, millel kõigil on oma mõju, mis aitavad leevendada erinevaid kaebuseid.
-Toode: 
-nimetus - toote nimi
-bränd - toote bränd 
-koostisosa - tootes sisalduv keemiline ühend
-mõju - koostisosal esinev omadus
-kaebus - kliendilt tulnud kaebus
+Toode:  
+nimetus - toote nimi  
+bränd - toote bränd  
+koostisosa - tootes sisalduv keemiline ühend  
+mõju - koostisosal esinev omadus  
+kaebus - kliendilt tulnud kaebus  
 tootegrupp kategooria - mis tootega on tegemist (šampoon, palsam, deodorant …)
 
 Tootja- ja brändiriigi eristuse (vt I etapi algne versioon) otsustasime eemaldada, kuna andmebaasi tehes keskendume vaid Eesti brändidele, mille tootmine toimub ka Eestis ehk tootjariik ei ole enam oluline. Andmebaasi kasutajal on eelteadmine, et antud andmebaas annab välja vaid kodumaised ilutooted (st Eestis valmistatud). 
