@@ -1,0 +1,300 @@
+-- Kogu kood andmebaasi loomiseks (tabelite loomine, välisvõtmete lisamine, andmete sisselugemine, protseduurid, funktsioonid, vaated)
+
+-- Tabelite loomine 
+CREATE TABLE IF NOT EXISTS "toode" (
+	"id" bigint GENERATED ALWAYS AS IDENTITY NOT NULL UNIQUE,
+	"nimi" text NOT NULL UNIQUE,
+	"brand_id" serial NOT NULL,
+	PRIMARY KEY ("id")
+);
+
+CREATE TABLE IF NOT EXISTS "brand" (
+	"id" bigint GENERATED ALWAYS AS IDENTITY NOT NULL UNIQUE,
+	"nimi" text NOT NULL UNIQUE,
+	PRIMARY KEY ("id")
+);
+
+CREATE TABLE IF NOT EXISTS "tootegrupp" (
+	"id" bigint GENERATED ALWAYS AS IDENTITY NOT NULL UNIQUE,
+	"nimi" text NOT NULL UNIQUE,
+	PRIMARY KEY ("id")
+);
+
+CREATE TABLE IF NOT EXISTS "pakend" (
+	"id" bigint GENERATED ALWAYS AS IDENTITY NOT NULL UNIQUE,
+	"kogus" double precision NOT NULL,
+	"yhik" text NOT NULL,
+	PRIMARY KEY ("id")
+);
+
+CREATE TABLE IF NOT EXISTS "koostisosa" (
+	"id" bigint GENERATED ALWAYS AS IDENTITY NOT NULL UNIQUE,
+	"nimetus_ee" text,
+	"nimetus_eng" text,
+	--"nimetus_lad" text UNIQUE,
+	--"lyhend" text,
+	PRIMARY KEY ("id")
+);
+
+
+CREATE TABLE IF NOT EXISTS "klassifikaator" (
+	"toode_id" serial NOT NULL,
+	"tootegrupp_id" serial NOT NULL,
+	"pakend_id" serial NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "moju" (
+	"id" bigint GENERATED ALWAYS AS IDENTITY NOT NULL UNIQUE,
+	"selgitus" text NOT NULL,
+	PRIMARY KEY ("id")
+);
+
+CREATE TABLE IF NOT EXISTS "toote_koostis" (
+	"toode_id" serial NOT NULL,
+	"koostisosa_id" serial NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "koostisosa_moju" (
+	"koostisosa_id" serial NOT NULL,
+	"moju_id" serial NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "kaebus_moju" (
+	"moju_id" serial NOT NULL,
+	"kaebus_id" serial NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "kaebus" (
+	"id" bigint GENERATED ALWAYS AS IDENTITY NOT NULL UNIQUE,
+	"sisu" text NOT NULL unique,
+	PRIMARY KEY ("id")
+);
+
+
+-- Välisvõtmete lisamine
+ALTER TABLE "toode" ADD CONSTRAINT "toode_fk2" FOREIGN KEY ("brand_id") REFERENCES "brand"("id");
+
+ALTER TABLE "klassifikaator" ADD CONSTRAINT "klassifikaator_fk0" FOREIGN KEY ("toode_id") REFERENCES "toode"("id");
+
+ALTER TABLE "klassifikaator" ADD CONSTRAINT "klassifikaator_fk1" FOREIGN KEY ("tootegrupp_id") REFERENCES "tootegrupp"("id");
+
+ALTER TABLE "klassifikaator" ADD CONSTRAINT "klassifikaator_fk2" FOREIGN KEY ("pakend_id") REFERENCES "pakend"("id");
+
+ALTER TABLE "toote_koostis" ADD CONSTRAINT "toote_koostis_fk0" FOREIGN KEY ("toode_id") REFERENCES "toode"("id");
+
+ALTER TABLE "toote_koostis" ADD CONSTRAINT "toote_koostis_fk1" FOREIGN KEY ("koostisosa_id") REFERENCES "koostisosa"("id");
+
+ALTER TABLE "koostisosa_moju" ADD CONSTRAINT "koostisosa_moju_fk0" FOREIGN KEY ("koostisosa_id") REFERENCES "koostisosa"("id");
+
+ALTER TABLE "koostisosa_moju" ADD CONSTRAINT "koostisosa_moju_fk1" FOREIGN KEY ("moju_id") REFERENCES "moju"("id");
+
+ALTER TABLE "kaebus_moju" ADD CONSTRAINT "kaebus_moju_fk0" FOREIGN KEY ("moju_id") REFERENCES "moju"("id");
+
+ALTER TABLE "kaebus_moju" ADD CONSTRAINT "kaebus_moju_fk1" FOREIGN KEY ("kaebus_id") REFERENCES "kaebus"("id");
+
+
+-- Andmete sisselugemine
+COPY brand FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/brand.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from brand;
+
+COPY kaebus FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/kaebus.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from kaebus;
+
+COPY koostisosa FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/koostisosa.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from koostisosa;
+
+COPY moju FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/moju.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from moju;
+
+COPY pakend FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/pakend.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from pakend;
+
+COPY toode FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/toode.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from toode;
+
+COPY tootegrupp FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/tootegrupp.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from tootegrupp;
+
+
+COPY kaebus_moju FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/kaebus_moju.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from kaebus_moju;
+
+COPY klassifikaator FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/klassifikaator.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from klassifikaator;
+
+COPY koostisosa_moju FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/koostisosa_moju.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from koostisosa_moju;
+
+COPY toote_koostis FROM '/Users/annabelhiiu/Documents/magister/andmebaasi_andmed_tabelite_kaupa/toote_koostis.csv' 
+DELIMITER ';'
+ENCODING 'UTF-8';
+
+select * from toote_koostis;
+
+
+
+-- Protseduur toote lisamiseks
+create or replace procedure sp_toote_lisamine(toode_nimi text, 
+												brand_nimi text, 
+												tootegrupp_nimi text, 
+												pakend_kogus integer,
+												pakend_yhik text)
+language plpgsql
+as $$
+    declare brandi_id integer;
+   	toote_id integer;
+   	tootegrupi_id integer;
+   	pakendi_id integer;
+    brand_arv integer:=0;
+   	tootegrupp_arv integer:=0;
+   	pakend_arv integer:=0;
+begin
+    select count(*) into brand_arv from brand where nimi=brand_nimi;
+    if brand_arv=0 then
+        insert into brand(nimi) values (brand_nimi);
+    end if;
+   select count(*) into tootegrupp_arv from tootegrupp where nimi=tootegrupp_nimi;
+    if tootegrupp_arv=0 then
+        insert into tootegrupp(nimi) values (tootegrupp_nimi);
+    end if;
+   select count(*) into pakend_arv from pakend where kogus = pakend_kogus and yhik = pakend_yhik;
+    if pakend_arv=0 then
+        insert into pakend(kogus, yhik) values (pakend_kogus, pakend_yhik);
+    end if;
+    select brand.id into brandi_id from brand where brand.nimi=brand_nimi;
+    insert into toode(nimi, brand_id) values (toode_nimi, brandi_id);
+   	select toode.id into toote_id from toode where toode.nimi=toode_nimi;
+   	select tootegrupp.id into tootegrupi_id from tootegrupp where tootegrupp.nimi=tootegrupp_nimi;
+  	select pakend.id into pakendi_id from pakend where pakend.kogus = pakend_kogus and pakend.yhik = pakend_yhik;
+    insert into klassifikaator(toode_id, tootegrupp_id, pakend_id) values (toote_id, tootegrupi_id, pakendi_id);
+raise  notice 'Andmebaasi lisati brändi % toode %. Tootegrupp: %. Kogus: % %.', brand_nimi, toode_nimi, tootegrupp_nimi, pakend_kogus, pakend_yhik;   
+end;
+$$;
+
+call sp_toote_lisamine('Sära andev vaarika bon bon kehakreem', 'joik', 'kreem', 150, 'ml');
+
+
+-- Protseduur tootele uue koguse lisamiseks
+create or replace procedure sp_uue_koguse_lisamine(toode_nimi text, 
+													pakend_kogus integer,
+													pakend_yhik text)
+language plpgsql
+as $$
+    declare toote_id integer;
+   	tootegrupi_id integer;
+   	pakendi_id integer;
+   	tootegrupp_arv integer:=0;
+   	pakend_arv integer:=0;
+   	loendur INTEGER := 1;
+begin
+	select toode.id into toote_id from toode where toode.nimi=toode_nimi;
+	select count(*) into pakend_arv from pakend where kogus = pakend_kogus and yhik = pakend_yhik;
+	if pakend_arv=0 then
+    	insert into pakend(kogus, yhik) values (pakend_kogus, pakend_yhik);
+	end if;
+	select pakend.id into pakendi_id from pakend where pakend.kogus = pakend_kogus and pakend.yhik = pakend_yhik;
+	select count(*) into tootegrupp_arv from klassifikaator where toode_id = toote_id;
+	for loendur in 1..tootegrupp_arv loop
+		select tootegrupp_id into tootegrupi_id from klassifikaator where toode_id = toote_id limit 1 offset loendur - 1;
+        insert into klassifikaator(toode_id, tootegrupp_id, pakend_id) values (toote_id, tootegrupi_id, pakendi_id);
+    end loop;
+raise notice 'Andmebaasi lisati tootele "%" uus pakendi suurus % %.', toode_nimi, pakend_kogus, pakend_yhik;   
+end;
+$$;
+
+call sp_uue_koguse_lisamine('Sära andev vaarika bon bon kehakreem', 50, 'ml'); -- ainult ühes tootegrupis
+call sp_uue_koguse_lisamine('SUPERBLOOM NAHKA ELUSTAV GEEL-TOONIK', 50, 'ml'); -- kahes tootegrupis
+
+
+-- Funktsioon kaebusele vastavate toodete leidmiseks
+create or replace function f_kaebusele_vastavad_tooted(kliendi_kaebus text)
+returns table ("Toote nimi" text)
+language plpgsql
+as $$
+	begin
+	return query select distinct t.nimi
+	from toode t
+	join toote_koostis tk on t.id = tk.toode_id
+	join koostisosa_moju km on tk.koostisosa_id = km.koostisosa_id
+	join kaebus_moju km2 on km.moju_id = km2.moju_id
+	join kaebus k on km2.kaebus_id = k.id
+	where k.sisu = kliendi_kaebus;
+	end;
+$$;
+
+select * from f_kaebusele_vastavad_tooted('kuiv nahk');
+
+
+-- Funktsioon lennukisse sobivate toodete leidmiseks
+create or replace function f_lennukisse_lubatud(pakendi_kogus integer, pakendi_yhik text)
+returns table ("Toote nimi" text)
+language plpgsql
+as $$
+	begin
+	return query select distinct t.nimi
+	from toode t
+	join klassifikaator k on t.id = k.toode_id
+	join pakend p on k.pakend_id = p.id
+	where p.kogus <= pakendi_kogus and p.yhik = pakendi_yhik;
+	end;
+$$;
+
+select * from f_lennukisse_lubatud(50, 'ml');
+
+select * from koostisosa;
+
+-- Vaade koostisosade ja kaebusete vaatamiseks
+create view v_koostisosa_kaebus as
+select distinct k.id as koostisosa_id, k.nimetus_ee, k.nimetus_eng, k2.id as kaebus_id, k2.sisu 
+from koostisosa k
+join koostisosa_moju km on km.koostisosa_id = k.id
+join moju m on m.id = km.moju_id 
+join kaebus_moju km2 on km2.moju_id = m.id
+join kaebus k2 on k2.id = km2.kaebus_id
+order by nimetus_ee asc;
+
+select * from v_koostisosa_kaebus;
+
+-- Vaade ühe toote mõjude vaatamiseks
+create or replace view v_superbloom_moju as
+select distinct m.selgitus 
+from moju m 
+join koostisosa_moju km on km.moju_id = m.id 
+join koostisosa k on k.id = km.koostisosa_id 
+join toote_koostis tk on tk.koostisosa_id = k.id
+join toode t on t.id = tk.toode_id 
+where t.nimi in ('SUPERBLOOM NAHKA ELUSTAV GEEL-TOONIK')
+and m.selgitus not in ('puudub');
+
+select * from v_superbloom_moju;
+
