@@ -23,18 +23,18 @@ Müügil olevad ilutooted (šampoonid, palsamid, deodorandid …) sisaldavad pal
 
 Andmebaasi kasutavad inimesed, kes saavad analüüsida endale meelepärase toote koostisosade omadusi ja teha saadud teadmiste pealt otsus, kas see toode on nende jaoks õige.
 
-Mõned näited küsimustest, millele saab vastuse andmebaasi kasutades:
-Milline deodorant sobib mulle, kui olen imetav ema?
-Milline kreem sobib näonaha niisutamiseks?
-Soovin, et minu seerumis sisalduksid koostisosadena: Centella Asiatica, Panthenol, Hyaluronic Acid, millised tooted vastavad sellele soovile?
-Millised tooted saan võtta lennukile minnes käsipagasisse?
+Mõned näited küsimustest, millele saab vastuse andmebaasi kasutades:  
+Milline deodorant sobib mulle, kui olen imetav ema?  
+Milline kreem sobib näonaha niisutamiseks?  
+Soovin, et minu seerumis sisalduksid koostisosadena: Centella Asiatica, Panthenol, Hyaluronic Acid, millised tooted vastavad sellele soovile?  
+Millised tooted saan võtta lennukile minnes käsipagasisse?  
 
 
 ## Ärireeglid ning nendest tulenevad seoste aarsused
 
-Ühel tootel on mitu koostisosa. Üks koostisosa võib esineda mitmes tootes. (n:m)
-Ühel koostisosal on mitu mõju.  Ühte mõju võib esineda mitmes koostisosas. (n:m)
-Ühes kaebuses võib olla kirjas mitu soovitud mõju. Ühte soovitud mõju võib esineda mitmes kaebuses. (n:m)
-Ühel tootel on üks bränd. Ühel brändil võib olla mitu toodet. (1:n)
-Üks toode võib kuuluda erinevatesse tootegruppidesse (nt geel-toonik kuulub kahte gruppi: geel ja toonik). Ühte tootegruppi võib esineda mitmes tootes. (n:m)
-Ühel tootel võib olla pakendeid eri suurustes. Ühte pakendi suurust võib esineda mitmel tootel. (n:m)
+Ühel tootel on mitu koostisosa. Üks koostisosa võib esineda mitmes tootes. (n:m)  
+Ühel koostisosal on mitu mõju.  Ühte mõju võib esineda mitmes koostisosas. (n:m)  
+Ühes kaebuses võib olla kirjas mitu soovitud mõju. Ühte soovitud mõju võib esineda mitmes kaebuses. (n:m)  
+Ühel tootel on üks bränd. Ühel brändil võib olla mitu toodet. (1:n)  
+Üks toode võib kuuluda erinevatesse tootegruppidesse (nt geel-toonik kuulub kahte gruppi: geel ja toonik). Ühte tootegruppi võib esineda mitmes tootes. (n:m)  
+Ühel tootel võib olla pakendeid eri suurustes. Ühte pakendi suurust võib esineda mitmel tootel. (n:m)  
