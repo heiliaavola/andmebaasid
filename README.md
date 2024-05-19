@@ -15,13 +15,11 @@ mõju - koostisosal esinev omadus
 kaebus - kliendilt tulnud kaebus  
 tootegrupp kategooria - mis tootega on tegemist (šampoon, palsam, deodorant …)
 
-Tootja- ja brändiriigi eristuse (vt I etapi algne versioon) otsustasime eemaldada, kuna andmebaasi tehes keskendume vaid Eesti brändidele, mille tootmine toimub ka Eestis ehk tootjariik ei ole enam oluline. Andmebaasi kasutajal on eelteadmine, et antud andmebaas annab välja vaid kodumaised ilutooted (st Eestis valmistatud). 
+## Valdkonna probleem ja kitsaskohad 
 
-Valdkonna probleem ja kitsaskohad 
+Müügil olevad ilutooted (šampoonid, palsamid, deodorandid …) sisaldavad palju koostisosi (kemikaale), mis on erineva mõjuga. Kõikide koostisosade mõju ja sobilikkuse analüüsiks ei ole aga inimestel igapäevaselt aega ja teadmisi. Selleks otsustasime teha andmebaasi, kus on kirjas Eesti ilutooted koos koostisosadega ja nende koostisosade mõjudega. Kuigi tegelikult eksisteerib veebilehekülgi (skincarisma.com) ja äppe (Think Dirty), mis aitavad inimesel analüüsida koostisosade mõju, siis nende suureks puuduseks on see, et nendes leidub vähe Eesti brändide tooteid. Sellepärast otsustasime keskenduda meie andmebaasis just Eesti ilutoodetele, mis aitab tarbijatel teha teadlikumaid otsuseid. 
 
-Müügil olevad ilutooted (šampoonid, palsamid, deodorandid …) sisaldavad palju erinevaid koostisosi (kemikaale), mis on erineva mõjuga. Kõikide koostisosade mõju ja sobilikkuse analüüsiks ei ole aga tavainimestel aega ja teadmisi. Selleks otsustasime teha andmebaasi, kus on kirjas tooted koos koostisosadega ja nende koostisosade mõjudega. Tegelikult eksisteerib veebilehekülgi (skincarisma.com) ja äppe (Think Dirty), mis aitavad inimesel analüüsida koostisosade mõju, kuid nende suureks puuduseks on see, et nendes leidub vähe Eesti brändide tooteid. Sellepärast otsustasime keskenduda meie andmebaasis just Eesti ilutoodetele, mis aitab tarbijatel teha teadlikumaid otsuseid. 
-
-Andmebaasi kasutajad, kasutajagrupid, millistele küsimustele need kasutajad andmebaasi abil vastuseid soovivad saada
+## Andmebaasi kasutajad, kasutajagrupid, millistele küsimustele need kasutajad andmebaasi abil vastuseid soovivad saada
 
 Andmebaasi kasutavad inimesed, kes saavad analüüsida endale meelepärase toote koostisosade omadusi ja teha saadud teadmiste pealt otsus, kas see toode on nende jaoks õige.
 
@@ -32,7 +30,7 @@ Soovin, et minu seerumis sisalduksid koostisosadena: Centella Asiatica, Pantheno
 Millised tooted saan võtta lennukile minnes käsipagasisse?
 
 
-Ärireeglid ning nendest tulenevad seoste aarsused
+## Ärireeglid ning nendest tulenevad seoste aarsused
 
 Ühel tootel on mitu koostisosa. Üks koostisosa võib esineda mitmes tootes. (n:m)
 Ühel koostisosal on mitu mõju.  Ühte mõju võib esineda mitmes koostisosas. (n:m)
