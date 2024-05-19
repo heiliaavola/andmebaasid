@@ -1,5 +1,5 @@
 #   (Eesti) ilutootedete andmebaas 
-Annabel Hiiu
+Annabel Hiiu  
 Heili Aavola
 
 Oleme kaks keemia taustaga andmeteaduse tudengit ning otsustasime oma projektis tegeleda ilutoodete ja neis sisalduvate koostisosadega. 
